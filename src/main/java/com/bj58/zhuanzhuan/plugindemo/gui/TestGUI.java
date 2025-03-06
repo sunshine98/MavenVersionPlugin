@@ -3,6 +3,22 @@ package com.bj58.zhuanzhuan.plugindemo.gui;
 import javax.swing.*;
 
 public class TestGUI {
+    public JTextField getUsername() {
+        return username;
+    }
+
+    public JTextField getPassword() {
+        return password;
+    }
+
+    public JLabel getUserNameLabel() {
+        return userNameLabel;
+    }
+
+    public JLabel getPasswordLabel() {
+        return passwordLabel;
+    }
+
     private JTextField username;
     private JTextField password;
     private JLabel userNameLabel;
