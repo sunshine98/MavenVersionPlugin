@@ -92,6 +92,10 @@
                                  id="com.bj58.zhuanzhuan.plugindemo.config.UiConfig"
                                  displayName="lyj测试配置"
         />
+        <toolWindow factoryClass="com.bj58.zhuanzhuan.plugindemo.config.SiderConfig"
+                    id="转转版本迭代工具"
+                    anchor="right"
+                    />
     </extensions>
     <actions>
         <action id="googleSearch" class="com.bj58.zhuanzhuan.plugindemo.action.GoogleSearchAction" text="获取版本号"

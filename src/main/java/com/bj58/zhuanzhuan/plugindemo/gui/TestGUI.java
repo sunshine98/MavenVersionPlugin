@@ -1,5 +1,7 @@
 package com.bj58.zhuanzhuan.plugindemo.gui;
 
+import com.intellij.openapi.ui.TextFieldWithBrowseButton;
+
 import javax.swing.*;
 
 public class TestGUI {
@@ -29,4 +31,5 @@ public class TestGUI {
     }
 
     private JPanel myPanel;
+    private TextFieldWithBrowseButton browseButton;
 }
