@@ -64,29 +64,29 @@ public class GoogleSearchAction extends AnAction {
         //-----------------------***【剪贴板】***----------------------------------
         CopyPasteManager.copyTextToClipboard(newVersion);
         String text = StrUtil.format("""
-                <div style="font-family: Arial, sans-serif; padding: 15px; background-color: #4E5052; color: white; text-align: center; line-height: 1.4;">
+                <div style="font-family: Arial, sans-serif; padding: 15px; background-color: #E6EEF7; color: #2D2D2D; text-align: center; line-height: 1.4;">
                   <!-- 居中显示的值 -->
-                  <div style="margin-bottom: 12px; font-size: 1.15em; color: #E5E5E5; font-weight: bold;">
+                  <div style="margin-bottom: 12px; font-size: 1.15em; color: #2D2D2D; font-weight: bold;">
                     {}
                   </div>
                  \s
                   <ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
                     <li style="margin: 4px 0;">
                       <strong>最新 Snapshot 版本:</strong>
-                      <span style="color: #6FBBED;">{}</span>
+                      <span style="color: #0052CC;">{}</span>
                     </li>
                     <li style="margin: 4px 0;">
                       <strong>最新 Release 版本:</strong>
-                      <span style="color: #2EDD7A;">{}</span>
+                      <span style="color: #28A745;">{}</span>
                     </li>
                     <li style="margin: 4px 0;">
                       <strong>生成 Release 版本:</strong>
-                      <span style="color: #2EDD7A;">{}</span>
-                      <span style="color: #808C95; font-size: 0.85em;">（已复制到剪贴板）</span>
+                      <span style="color: #28A745;">{}</span>
+                      <span style="color: #6C757D; font-size: 0.85em;">（已复制到剪贴板）</span>
                     </li>
                   </ul>
                  \s
-                  <p style="color: #808C95; font-size: 0.9em; margin-top: 8px; text-align: right;">
+                  <p style="color: #6C757D; font-size: 0.9em; margin-top: 8px; text-align: right;">
                     Powered by 刘扬俊
                   </p>
                 </div>
