@@ -9,6 +9,9 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationType;
+import com.intellij.notification.Notifications;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -47,7 +50,7 @@ public class GoogleSearchAction extends AnAction {
         }
         String latestRelease = JSONUtil.parseObj(body).getByPath("data[0].latestRelease", String.class);
         String latestSnapshot = JSONUtil.parseObj(body).getByPath("data[0].latestSnapshot", String.class);
-
+        String artifactId = JSONUtil.parseObj(body).getByPath("data[0].artifactId", String.class);
         List<String> split = StrUtil.split(latestRelease, StrPool.C_DOT);
         if (split.size() != 3) {
             Messages.showInfoMessage("无法解析内容:\n" + body, "操作失败");
@@ -60,16 +63,37 @@ public class GoogleSearchAction extends AnAction {
 
         //-----------------------***【剪贴板】***----------------------------------
         CopyPasteManager.copyTextToClipboard(newVersion);
-        Messages.showInfoMessage(StrUtil.format("""
-               \s
-                最新Snapshot版本: {}
-                               \s
-                最新Release版本：{}
-                               \s
-                生成Release版本版本：{}（已复制到剪贴板）
-               \s
-                Powered by 刘扬俊(liuyangjun@zhuanzhuan.com)
-              """, latestSnapshot, latestRelease, newVersion), "操作成功");
+        String text = StrUtil.format("""
+                <div style="font-family: Arial, sans-serif; padding: 15px; background-color: #4E5052; color: white; text-align: center; line-height: 1.4;">
+                  <!-- 居中显示的值 -->
+                  <div style="margin-bottom: 12px; font-size: 1.15em; color: #E5E5E5; font-weight: bold;">
+                    {}
+                  </div>
+                 \s
+                  <ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
+                    <li style="margin: 4px 0;">
+                      <strong>最新 Snapshot 版本:</strong>
+                      <span style="color: #6FBBED;">{}</span>
+                    </li>
+                    <li style="margin: 4px 0;">
+                      <strong>最新 Release 版本:</strong>
+                      <span style="color: #2EDD7A;">{}</span>
+                    </li>
+                    <li style="margin: 4px 0;">
+                      <strong>生成 Release 版本:</strong>
+                      <span style="color: #2EDD7A;">{}</span>
+                      <span style="color: #808C95; font-size: 0.85em;">（已复制到剪贴板）</span>
+                    </li>
+                  </ul>
+                 \s
+                  <p style="color: #808C95; font-size: 0.9em; margin-top: 8px; text-align: right;">
+                    Powered by 刘扬俊
+                  </p>
+                </div>
+                """, artifactId,latestSnapshot, latestRelease, newVersion);
+//        Messages.showInfoMessage(text, "操作成功");
+        Notification notification = new Notification("myNotiGroup", "生成成功", text, NotificationType.INFORMATION);
+        Notifications.Bus.notify(notification,e.getProject());
     }
 
 }

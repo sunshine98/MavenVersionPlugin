@@ -96,6 +96,7 @@
                     id="转转版本迭代工具"
                     anchor="right"
                     />
+        <notificationGroup displayType="BALLOON" id="myNotiGroup"/>
     </extensions>
     <actions>
         <action id="googleSearch" class="com.bj58.zhuanzhuan.plugindemo.action.GoogleSearchAction" text="获取版本号"
