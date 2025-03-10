@@ -20,7 +20,7 @@ public final class MavenVersionState implements PersistentStateComponent<MavenVe
         this.host = host;
     }
 
-    private String host="https://nexus.zhuanspirit.com/";
+    private String host="https://nexus.zhuanspirit.com";
 
     @Override
     public @Nullable MavenVersionState getState() {
