@@ -92,10 +92,13 @@
                                  id="com.bj58.zhuanzhuan.plugindemo.config.UiConfig"
                                  displayName="lyj测试配置"
         />
-        <toolWindow factoryClass="com.bj58.zhuanzhuan.plugindemo.config.SiderConfig"
-                    id="转转版本迭代工具"
-                    anchor="right"
-                    />
+        <applicationConfigurable instance="com.bj58.zhuanzhuan.plugindemo.config.MavenVersionConfig"
+                                 id="com.bj58.zhuanzhuan.plugindemo.config.MavenVersionConfig"
+                                 displayName="Maven Version AutoBumper"/>
+<!--        <toolWindow factoryClass="com.bj58.zhuanzhuan.plugindemo.config.SiderConfig"-->
+<!--                    id="转转版本迭代工具"-->
+<!--                    anchor="right"-->
+<!--                    />-->
         <notificationGroup displayType="BALLOON" id="myNotiGroup"/>
     </extensions>
     <actions>
