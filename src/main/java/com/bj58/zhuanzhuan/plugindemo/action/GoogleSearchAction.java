@@ -73,7 +73,10 @@ public class GoogleSearchAction extends AnAction {
 
 
         //-----------------------***【剪贴板】***----------------------------------
-        CopyPasteManager.copyTextToClipboard(newVersion);
+        Boolean neeedAutoCopy = mavenVersionState.getNeeedAutoCopy();
+        if (neeedAutoCopy) {
+            CopyPasteManager.copyTextToClipboard(newVersion);
+        }
         String text = StrUtil.format("""
                 <div style="font-family: Arial, sans-serif; padding: 15px; background-color: #E6EEF7; color: #2D2D2D; text-align: center; line-height: 1.4;">
                   <!-- 居中显示的值 -->
@@ -93,7 +96,7 @@ public class GoogleSearchAction extends AnAction {
                     <li style="margin: 4px 0;">
                       <strong>生成 Release 版本:</strong>
                       <span style="color: #28A745;">{}</span>
-                      <span style="color: #6C757D; font-size: 0.85em;">（已复制到剪贴板）</span>
+                      <span style="color: #6C757D; font-size: 0.85em;">{}</span>
                     </li>
                   </ul>
                  \s
@@ -101,8 +104,7 @@ public class GoogleSearchAction extends AnAction {
                     Powered by 刘扬俊
                   </p>
                 </div>
-                """, artifactId,latestSnapshot, latestRelease, newVersion);
-//        Messages.showInfoMessage(text, "操作成功");
+                """, artifactId,latestSnapshot, latestRelease, newVersion,neeedAutoCopy?"（已复制到剪贴板":"");
         Notification notification = new Notification("myNotiGroup", "生成成功", text, NotificationType.INFORMATION);
         Notifications.Bus.notify(notification,e.getProject());
     }
