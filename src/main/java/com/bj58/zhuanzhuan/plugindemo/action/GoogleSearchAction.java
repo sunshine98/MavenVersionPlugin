@@ -104,7 +104,7 @@ public class GoogleSearchAction extends AnAction {
                     Powered by 刘扬俊
                   </p>
                 </div>
-                """, artifactId,latestSnapshot, latestRelease, newVersion,neeedAutoCopy?"（已复制到剪贴板":"");
+                """, artifactId,latestSnapshot, latestRelease, newVersion,neeedAutoCopy?"（已复制到剪贴板）":"");
         Notification notification = new Notification("myNotiGroup", "生成成功", text, NotificationType.INFORMATION);
         Notifications.Bus.notify(notification,e.getProject());
     }
