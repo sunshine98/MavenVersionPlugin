@@ -1,10 +1,10 @@
 package com.bj58.zhuanzhuan.plugindemo.persistent;
 
+import cn.hutool.core.util.ObjectUtil;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.Service;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
-import com.intellij.util.xmlb.XmlSerializerUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,7 +20,7 @@ public final class MavenVersionState implements PersistentStateComponent<MavenVe
         this.host = host;
     }
 
-    private String host;
+    private String host="https://nexus.zhuanspirit.com/";
 
     @Override
     public @Nullable MavenVersionState getState() {
@@ -29,6 +29,8 @@ public final class MavenVersionState implements PersistentStateComponent<MavenVe
 
     @Override
     public void loadState(@NotNull MavenVersionState state) {
-        XmlSerializerUtil.copyBean(state,this);
+        if (ObjectUtil.isNotEmpty(state.getHost())) {
+            this.host = state.getHost();
+        }
     }
 }

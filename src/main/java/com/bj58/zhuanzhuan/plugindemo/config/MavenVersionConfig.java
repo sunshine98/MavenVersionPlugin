@@ -1,5 +1,6 @@
 package com.bj58.zhuanzhuan.plugindemo.config;
 
+import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.ObjectUtil;
 import com.bj58.zhuanzhuan.plugindemo.gui.MavenVersionConfigForm;
 import com.bj58.zhuanzhuan.plugindemo.persistent.MavenVersionState;
@@ -43,6 +44,10 @@ public class MavenVersionConfig implements Configurable {
 
     @Override
     public void apply() throws ConfigurationException {
-        mavenVersionState.setHost(mavenVersionConfigForm.getHostText().getText());
+        String text = mavenVersionConfigForm.getHostText().getText();
+        if (!Validator.isUrl(text)) {
+            throw new ConfigurationException("请输入正确的host地址！");
+        }
+        mavenVersionState.setHost(text);
     }
 }
