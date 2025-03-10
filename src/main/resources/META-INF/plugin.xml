@@ -88,10 +88,10 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <applicationConfigurable instance="com.bj58.zhuanzhuan.plugindemo.config.UiConfig"
-                                 id="com.bj58.zhuanzhuan.plugindemo.config.UiConfig"
-                                 displayName="lyj测试配置"
-        />
+<!--        <applicationConfigurable instance="com.bj58.zhuanzhuan.plugindemo.config.UiConfig"-->
+<!--                                 id="com.bj58.zhuanzhuan.plugindemo.config.UiConfig"-->
+<!--                                 displayName="lyj测试配置"-->
+<!--        />-->
         <applicationConfigurable instance="com.bj58.zhuanzhuan.plugindemo.config.MavenVersionConfig"
                                  id="com.bj58.zhuanzhuan.plugindemo.config.MavenVersionConfig"
                                  displayName="Maven Version AutoBumper"/>

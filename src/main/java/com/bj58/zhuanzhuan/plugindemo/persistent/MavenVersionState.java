@@ -20,8 +20,17 @@ public final class MavenVersionState implements PersistentStateComponent<MavenVe
         this.host = host;
     }
 
+    public void setNeeedAutoCopy(Boolean neeedAutoCopy) {
+        this.neeedAutoCopy = neeedAutoCopy;
+    }
+
     private String host="https://nexus.zhuanspirit.com";
 
+    public Boolean getNeeedAutoCopy() {
+        return neeedAutoCopy;
+    }
+
+    private Boolean neeedAutoCopy = true;
     @Override
     public @Nullable MavenVersionState getState() {
         return this;
@@ -32,5 +41,9 @@ public final class MavenVersionState implements PersistentStateComponent<MavenVe
         if (ObjectUtil.isNotEmpty(state.getHost())) {
             this.host = state.getHost();
         }
+        if (ObjectUtil.isNotEmpty(state.getNeeedAutoCopy())) {
+            this.neeedAutoCopy = state.getNeeedAutoCopy();
+        }
+
     }
 }

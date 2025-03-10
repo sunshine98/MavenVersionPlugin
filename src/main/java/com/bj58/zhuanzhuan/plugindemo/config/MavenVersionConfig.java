@@ -28,18 +28,20 @@ public class MavenVersionConfig implements Configurable {
 
     @Override
     public @Nullable JComponent createComponent() {
-        String host = mavenVersionState.getHost();
         return mavenVersionConfigForm.getConfigPanel();
     }
 
     @Override
     public boolean isModified() {
-        return ObjectUtil.notEqual(mavenVersionState.getHost(), mavenVersionConfigForm.getHostText().getText());
+        boolean hostChange = ObjectUtil.notEqual(mavenVersionState.getHost(), mavenVersionConfigForm.getHostText().getText());
+        boolean autoCopyChange = ObjectUtil.notEqual(mavenVersionState.getNeeedAutoCopy(), mavenVersionConfigForm.getVersionAutoCopyButton().isSelected());
+        return hostChange || autoCopyChange;
     }
 
     @Override
     public void reset() {
         mavenVersionConfigForm.getHostText().setText(mavenVersionState.getHost());
+        mavenVersionConfigForm.getVersionAutoCopyButton().setSelected(mavenVersionState.getNeeedAutoCopy());
     }
 
     @Override
@@ -49,5 +51,8 @@ public class MavenVersionConfig implements Configurable {
             throw new ConfigurationException("请输入正确的host地址！");
         }
         mavenVersionState.setHost(text);
+        boolean selected = mavenVersionConfigForm.getVersionAutoCopyButton().isSelected();
+        mavenVersionState.setNeeedAutoCopy(selected);
+
     }
 }

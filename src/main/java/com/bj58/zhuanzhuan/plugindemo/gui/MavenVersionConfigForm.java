@@ -19,4 +19,10 @@ public class MavenVersionConfigForm {
     }
 
     private JTextField hostText;
+
+    public JRadioButton getVersionAutoCopyButton() {
+        return versionAutoCopyButton;
+    }
+
+    private JRadioButton versionAutoCopyButton;
 }
