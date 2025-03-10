@@ -28,14 +28,17 @@ public class MavenVersionConfig implements Configurable {
     @Override
     public @Nullable JComponent createComponent() {
         String host = mavenVersionState.getHost();
-        JPanel configPanel = mavenVersionConfigForm.getConfigPanel();
-        mavenVersionConfigForm.getHostText().setText(host);
-        return configPanel;
+        return mavenVersionConfigForm.getConfigPanel();
     }
 
     @Override
     public boolean isModified() {
         return ObjectUtil.notEqual(mavenVersionState.getHost(), mavenVersionConfigForm.getHostText().getText());
+    }
+
+    @Override
+    public void reset() {
+        mavenVersionConfigForm.getHostText().setText(mavenVersionState.getHost());
     }
 
     @Override

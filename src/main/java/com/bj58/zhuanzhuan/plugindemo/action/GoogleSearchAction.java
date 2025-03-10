@@ -1,5 +1,6 @@
 package com.bj58.zhuanzhuan.plugindemo.action;
 
+import cn.hutool.core.io.IORuntimeException;
 import cn.hutool.core.net.url.UrlBuilder;
 import cn.hutool.core.text.StrPool;
 import cn.hutool.core.util.NumberUtil;
@@ -9,12 +10,14 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
+import com.bj58.zhuanzhuan.plugindemo.persistent.MavenVersionState;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.ide.CopyPasteManager;
 import com.intellij.openapi.ui.Messages;
@@ -22,7 +25,10 @@ import com.intellij.openapi.ui.Messages;
 import java.util.List;
 
 public class GoogleSearchAction extends AnAction {
-
+    private MavenVersionState mavenVersionState;
+    {
+        mavenVersionState = ApplicationManager.getApplication().getService(MavenVersionState.class);
+    }
     @Override
     public void actionPerformed(AnActionEvent e) {
 
@@ -33,9 +39,11 @@ public class GoogleSearchAction extends AnAction {
             Messages.showInfoMessage("未选中任何内容", "操作失败");
             return;
         }
+        String host = mavenVersionState.getHost();
+        String url = StrUtil.format("{}/nexus/service/local/lucene/search", host);
 
         //-----------------------***【构建请求】***----------------------------------
-        UrlBuilder urlBuilder = UrlBuilder.of("https://nexus.zhuanspirit.com/nexus/service/local/lucene/search");
+        UrlBuilder urlBuilder = UrlBuilder.of(url);
         UrlBuilder finalUrl = urlBuilder.addQuery("collapseresults", "true")
                 .addQuery("_dc", System.currentTimeMillis())
                 .addQuery("q", selectedText);
@@ -43,6 +51,9 @@ public class GoogleSearchAction extends AnAction {
         HttpRequest request = HttpUtil.createGet(finalUrl.build()).header("Accept", "application/json");
         try (HttpResponse response = request.execute()) {
             body = response.body();
+        }catch (IORuntimeException ioRuntimeException){
+            Messages.showInfoMessage("Nexus host 配置错误："+host, "操作失败");
+            return;
         }
         if (ObjectUtil.isEmpty(body)) {
             Messages.showInfoMessage("无响应:\n" + body, "操作失败");
