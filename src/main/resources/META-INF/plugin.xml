@@ -14,15 +14,47 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <title>Maven Version AutoBumper 插件说明</title>
 </head>
 <body>
+<div class="plugin-description-en">
+  <h1>Maven Version AutoBumper</h1>
+  <h2 class="subtitle">Smart Private Repository Version Auto-Increment Tool</h2>
+
+  <!-- Author Link Button -->
+  <div class="author-link">
+    <a href="https://liuyangjun.blog.csdn.net/"
+       target="_blank"
+       class="primary-button">
+      Visit Yangjun's House →
+    </a>
+  </div>
+
+  <div class="core-features">
+    <h2>Core Features</h2>
+    <ul>
+      <li><strong>Automated Version Management</strong>: Designed to simplify Maven project version management processes</li>
+      <li><strong>Intelligent Version Increment</strong>: Generates the next version number based on Semantic Versioning (SemVer) rules</li>
+      <li><strong>Eliminate Manual Intervention</strong>: Avoids the tedious operation of manually querying the private repository version number</li>
+    </ul>
+  </div>
+
+  <h2>Usage Instructions</h2>
+  <ol>
+    <li>Select the component's corresponding artifactId, e.g., <code>qianshuju_opinion_agg_scf.contract</code></li>
+    <li>Locate the <strong>Help</strong> toolbar at the top and select <strong>Get Version Number</strong></li>
+    <li>Or use the shortcut <kbd>Alt+V</kbd></li>
+    <li>A dialog displays the version information, and the new version number is automatically copied to the clipboard</li>
+    <li>Use <kbd>Ctrl+V</kbd> to replace the snapshot version</li>
+  </ol>
+</div>
+
 <div class="plugin-description">
-  <h1>Maven Version AutoBumper Plugin for IntelliJ IDEA</h1>
+  <h1>Maven Version AutoBumper</h1>
   <h2 class="subtitle">智能私服版本号自动迭代工具</h2>
 
   <!-- 作者链接按钮 -->
@@ -45,11 +77,11 @@
 
   <h2>使用方法</h2>
   <ol>
-    <li>选中组件对应的artifactId，例如：qianshuju_opinion_agg_scf.contract</li>
+    <li>选中组件对应的artifactId，例如：<code>qianshuju_opinion_agg_scf.contract</code></li>
     <li>在上方找到【Help】工具栏，选中获取版本号</li>
-    <li>或者直接使用快捷键Alt+V</li>
+    <li>或者直接使用快捷键<kbd>Alt+V</kbd></li>
     <li>弹框展示对应的版本信息，计算的新版本号自动复制到剪贴板</li>
-    <li>使用Ctrl+V,将新版本覆盖快照版本</li>
+    <li>使用<kbd>Ctrl+V</kbd>，将新版本覆盖快照版本</li>
   </ol>
 </div>
 </body>
