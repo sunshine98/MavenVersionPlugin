@@ -23,7 +23,7 @@ public class MavenVersionConfig implements Configurable {
 
     @Override
     public @ConfigurableName String getDisplayName() {
-        return "Maven Version AutoBumper";
+        return CommonConfig.DISPLAY_NAME;
     }
 
     @Override

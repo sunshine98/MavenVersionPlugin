@@ -5,6 +5,7 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.Service;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
+import com.liuyangjun.plugindemo.config.CommonConfig;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -24,13 +25,13 @@ public final class MavenVersionState implements PersistentStateComponent<MavenVe
         this.neeedAutoCopy = neeedAutoCopy;
     }
 
-    private String host="https://nexus.abc.com";
+    private String host= CommonConfig.DEFAULT_HOST;
 
     public Boolean getNeeedAutoCopy() {
         return neeedAutoCopy;
     }
 
-    private Boolean neeedAutoCopy = true;
+    private Boolean neeedAutoCopy = CommonConfig.DEFAULT_AUTO_COPY;
     @Override
     public @Nullable MavenVersionState getState() {
         return this;

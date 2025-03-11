@@ -10,6 +10,7 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
+import com.liuyangjun.plugindemo.config.CommonConfig;
 import com.liuyangjun.plugindemo.persistent.MavenVersionState;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
@@ -40,7 +41,7 @@ public class GoogleSearchAction extends AnAction {
             return;
         }
         String host = mavenVersionState.getHost();
-        String url = StrUtil.format("{}/nexus/service/local/lucene/search", host);
+        String url = StrUtil.format(CommonConfig.NEXUS_SERVICE_LOCAL_LUCENE_SEARCH, host);
 
         //-----------------------***【构建请求】***----------------------------------
         UrlBuilder urlBuilder = UrlBuilder.of(url);
@@ -77,34 +78,7 @@ public class GoogleSearchAction extends AnAction {
         if (neeedAutoCopy) {
             CopyPasteManager.copyTextToClipboard(newVersion);
         }
-        String text = StrUtil.format("""
-                <div style="font-family: Arial, sans-serif; padding: 15px; background-color: #E6EEF7; color: #2D2D2D; text-align: center; line-height: 1.4;">
-                  <!-- 居中显示的值 -->
-                  <div style="margin-bottom: 12px; font-size: 1.15em; color: #2D2D2D; font-weight: bold;">
-                    {}
-                  </div>
-                 \s
-                  <ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
-                    <li style="margin: 4px 0;">
-                      <strong>最新 Snapshot 版本:</strong>
-                      <span style="color: #0052CC;">{}</span>
-                    </li>
-                    <li style="margin: 4px 0;">
-                      <strong>最新 Release 版本:</strong>
-                      <span style="color: #28A745;">{}</span>
-                    </li>
-                    <li style="margin: 4px 0;">
-                      <strong>生成 Release 版本:</strong>
-                      <span style="color: #28A745;">{}</span>
-                      <span style="color: #6C757D; font-size: 0.85em;">{}</span>
-                    </li>
-                  </ul>
-                 \s
-                  <p style="color: #6C757D; font-size: 0.9em; margin-top: 8px; text-align: right;">
-                    Powered by 刘扬俊
-                  </p>
-                </div>
-                """, artifactId,latestSnapshot, latestRelease, newVersion,neeedAutoCopy?"（已复制到剪贴板）":"");
+        String text = StrUtil.format(CommonConfig.TIP_TEXT, artifactId,latestSnapshot, latestRelease, newVersion,neeedAutoCopy?"（已复制到剪贴板）":"");
         Notification notification = new Notification("myNotiGroup", "生成成功", text, NotificationType.INFORMATION);
         Notifications.Bus.notify(notification,e.getProject());
     }
