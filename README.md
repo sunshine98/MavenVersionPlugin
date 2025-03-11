@@ -1,3 +1,31 @@
+
+# Maven Version AutoBumper Plugin for IntelliJ IDEA  
+## Intelligent Private Repository Version Auto-Increment Tool  
+
+---
+
+### Author Link  
+[Visit Yang Jun's Little House →](https://liuyangjun.blog.csdn.net/)  
+
+---
+
+### Core Features  
+- **Automated Version Management**: Designed to simplify Maven project version management workflows  
+- **Smart Version Increment**: Automatically generates next version number based on Semantic Versioning (SemVer) rules  
+- **Eliminates Manual Intervention**: Removes the hassle of manually checking private repository version numbers  
+
+---
+
+### Usage Guide  
+1. **Select the component's corresponding `artifactId`**, e.g.: `qianshuju_opinion_agg_scf.contract`  
+2. **Locate the 【Help】toolbar at the top**, and select "Get Version"  
+3. **Or use shortcut `Alt+V` directly**  
+4. **Popup displays version information**, new version number automatically copied to clipboard  
+5. **Paste with `Ctrl+V` to replace the snapshot version**  
+
+
+
+
 # Maven Version AutoBumper Plugin for IntelliJ IDEA  
 ## 智能私服版本号自动迭代工具  
 
@@ -22,13 +50,5 @@
 4. **弹框展示对应的版本信息**，计算的新版本号自动复制到剪贴板  
 5. **使用 `Ctrl+V`，将新版本覆盖快照版本**  
 
----
 
-### 格式说明  
-1. **标题层级**：使用 `#` 和 `##` 对应 HTML 的 `<h1>` 和 `<h2>`。  
-2. **链接**：直接转换为 Markdown 的 `[文本](URL)` 格式。  
-3. **列表**：  
-   - 核心功能用无序列表（`-` 或 `*`）。  
-   - 使用方法用有序列表（`1.`）。  
-4. **强调文本**：使用 `**粗体**` 对应 HTML 的 `<strong>` 标签。  
-5. **代码片段**：用反引号包裹 `artifactId` 和快捷键（如 `Alt+V`）。  
+
