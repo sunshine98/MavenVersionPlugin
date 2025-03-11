@@ -1,9 +1,9 @@
-package com.bj58.zhuanzhuan.plugindemo.config;
+package com.liuyangjun.plugindemo.config;
 
 import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.ObjectUtil;
-import com.bj58.zhuanzhuan.plugindemo.gui.MavenVersionConfigForm;
-import com.bj58.zhuanzhuan.plugindemo.persistent.MavenVersionState;
+import com.liuyangjun.plugindemo.gui.MavenVersionConfigForm;
+import com.liuyangjun.plugindemo.persistent.MavenVersionState;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.options.ConfigurationException;

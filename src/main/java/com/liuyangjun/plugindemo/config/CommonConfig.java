@@ -1,4 +1,4 @@
-package com.bj58.zhuanzhuan.plugindemo.config;
+package com.liuyangjun.plugindemo.config;
 
 import com.intellij.openapi.util.IconLoader;
 

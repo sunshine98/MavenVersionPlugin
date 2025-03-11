@@ -1,4 +1,4 @@
-package com.bj58.zhuanzhuan.plugindemo.persistent;
+package com.liuyangjun.plugindemo.persistent;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.intellij.openapi.components.PersistentStateComponent;
@@ -24,7 +24,7 @@ public final class MavenVersionState implements PersistentStateComponent<MavenVe
         this.neeedAutoCopy = neeedAutoCopy;
     }
 
-    private String host="https://nexus.zhuanspirit.com";
+    private String host="https://nexus.abc.com";
 
     public Boolean getNeeedAutoCopy() {
         return neeedAutoCopy;

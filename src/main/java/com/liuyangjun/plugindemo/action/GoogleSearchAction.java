@@ -1,4 +1,4 @@
-package com.bj58.zhuanzhuan.plugindemo.action;
+package com.liuyangjun.plugindemo.action;
 
 import cn.hutool.core.io.IORuntimeException;
 import cn.hutool.core.net.url.UrlBuilder;
@@ -10,7 +10,7 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
-import com.bj58.zhuanzhuan.plugindemo.persistent.MavenVersionState;
+import com.liuyangjun.plugindemo.persistent.MavenVersionState;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;

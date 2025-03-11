@@ -1,4 +1,4 @@
-package com.bj58.zhuanzhuan.plugindemo.gui;
+package com.liuyangjun.plugindemo.gui;
 
 import javax.swing.*;
 
