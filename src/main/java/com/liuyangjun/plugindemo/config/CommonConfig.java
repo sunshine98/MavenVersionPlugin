@@ -1,5 +1,7 @@
 package com.liuyangjun.plugindemo.config;
 
+import java.util.regex.Pattern;
+
 public interface CommonConfig {
 
     /** nexus服务本地lucene搜索url格式 */
@@ -39,4 +41,7 @@ public interface CommonConfig {
     String DEFAULT_HOST = "https://nexus.abc.com";
     /** 默认自动复制 */
     boolean DEFAULT_AUTO_COPY = true;
+
+    Pattern ARTIFACT_ID_PATTERN = Pattern.compile("^([a-zA-Z0-9_-][a-zA-Z0-9._-]*)\\.version$");
+
 }

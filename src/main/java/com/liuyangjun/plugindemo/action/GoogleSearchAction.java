@@ -5,13 +5,12 @@ import cn.hutool.core.net.url.UrlBuilder;
 import cn.hutool.core.text.StrPool;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.ReUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
-import com.liuyangjun.plugindemo.config.CommonConfig;
-import com.liuyangjun.plugindemo.persistent.MavenVersionState;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
@@ -22,6 +21,8 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.ide.CopyPasteManager;
 import com.intellij.openapi.ui.Messages;
+import com.liuyangjun.plugindemo.config.CommonConfig;
+import com.liuyangjun.plugindemo.persistent.MavenVersionState;
 
 import java.util.List;
 
@@ -39,6 +40,12 @@ public class GoogleSearchAction extends AnAction {
         if (StrUtil.isEmpty(selectedText)) {
             Messages.showInfoMessage("未选中任何内容", "操作失败");
             return;
+        }
+        // TODO【liuyangjun】 2025/3/12:兼容XX.version格式的文本
+        String group1 = ReUtil.getGroup1(CommonConfig.ARTIFACT_ID_PATTERN, selectedText);
+        if (ObjectUtil.isNotEmpty(group1)) {
+            //去除version
+            selectedText = group1;
         }
         String host = mavenVersionState.getHost();
         String url = StrUtil.format(CommonConfig.NEXUS_SERVICE_LOCAL_LUCENE_SEARCH, host);

@@ -89,6 +89,14 @@
 
   ]]>
     </description>
+    <change-notes>
+        Version 1.1.0 (2025-03-12)
+        ---------------------------
+        * 新增功能：
+        - 添加了对形如 a.b.version 格式的选中文进行本兼容支持
+
+
+    </change-notes>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
