@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.liuyangjun"
-version = "1.1.1"
+version = "1.1.2"
 
 repositories {
 //    mavenCentral()
@@ -17,7 +17,10 @@ repositories {
 }
 
 dependencies {
-    implementation ("cn.hutool:hutool-all:5.8.35")
+//    implementation ("cn.hutool:hutool-all:5.8.35")
+    implementation ("cn.hutool:hutool-core:5.8.36")
+    implementation ("cn.hutool:hutool-http:5.8.36")
+    implementation ("cn.hutool:hutool-json:5.8.36")
 }
 
 // Configure Gradle IntelliJ Plugin
